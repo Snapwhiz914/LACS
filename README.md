@@ -53,3 +53,7 @@ Notes:
 ## Contributing
 
 Be sure to read the CONTRIBUTING.md file before you submit a pull request
+
+## Future
+
+ - Soon (as of April 21), I will release a node package, which can run on another server that is update by changes to the hub server.
