@@ -1,2 +1,0 @@
-[console_scripts]
-start-LACS = LACS:main.main
