@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: LACS
+Version: 1.0
+Summary: Access Control System using UFW and email
+Home-page: https://github.com/Snapwhiz914/LACS
+Author: L
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Snapwhiz914/LACSissues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GPL License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+UNKNOWN
+

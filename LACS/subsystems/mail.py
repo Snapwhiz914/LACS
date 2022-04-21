@@ -30,9 +30,9 @@ class MailManager:
                         new_mail_messages.append(message)
             return new_mail_messages
         except AssertionError:
-            syslog.syslog(syslog.LOG_ERR, "Status is not OK after mail search.")
+            print("Status is not OK after mail search.")
         except TimeoutError:
-            syslog.syslog(syslog.LOG_WARNING, "(ignorable) Connection timed out")
-        except ConnectionError:
-            syslog.syslog(syslog.LOG_ERR, "Connection error occurred.")
+            print("(ignorable) Mail Connection timed out. If this happens freqently, check if your mail service is up and working.")
+        except ConnectionError as e:
+            print(f"Connection error to mail server occurred with error number {e.errno}")
         return []

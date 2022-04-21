@@ -26,13 +26,13 @@ def get_config_object():
         if conf_schema.is_valid(result):
             return conf_schema.validate(result)
         else:
-            syslog.syslog(syslog.LOG_CRIT, "Config file not Valid. Check for proper types and required fields.")
+            print("Config file not Valid. Check for proper types and required fields.")
     except FileNotFoundError as e:
-        syslog.syslog(syslog.LOG_CRIT, "Config file not found.")
+        print("Config file not found.")
         exit(1)
     except ScannerError as e:
-        syslog.syslog(syslog.LOG_CRIT, "YAML scanner error when trying to load config")
+        print("YAML scanner error when trying to load config")
         exit(1)
     except ParserError as e:
-        syslog.syslog(syslog.LOG_CRIT, "YAML Parser error: check config syntax.")
+        print("YAML Parser error: check config syntax.")
         exit(1)

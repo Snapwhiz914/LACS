@@ -11,9 +11,9 @@ class UFWManager:
         try:
             result = subprocess.run(f"ufw allow from {ip_addr}", shell=True, check=True, capture_output=True)
         except subprocess.CalledProcessError as e:
-            syslog.syslog(syslog.LOG_CRIT, f"UFW allow command failed with: {e.output}")
+            print(f"UFW allow command failed with: {e.output}")
         
-        syslog.syslog(syslog.LOG_WARNING, "ADDED firewall rule to allow from " + ip_addr)
+        print("ADDED firewall rule to allow from " + ip_addr)
 
         dt = datetime.now() + datetime.timedelta(hours=24)
         job = self.cron.new(command='f"ufw delete allow from {ip_addr}"')
