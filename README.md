@@ -32,11 +32,13 @@ The configuration file will be at /etc/lacs.yaml after running the install instr
 
 Here is a general guide for what your configuration should look like:
 
+```yaml
 email: account@example.com
 password: AccountPassword123
 server: imap.server.com
 subject: "SubjectRequirement"
 time_in_hours: 24
+```
 
 Notes:
  - Your subject requirement should be secure. I recommend generating a key.
