@@ -18,6 +18,7 @@ fi
 CONFIG_TEMPLATE=$'email: account@example.com
 password: AccountPassword123
 server: imap.server.com
+port: 143 #Default imap port, do not change unless necessary
 subject: "SubjectRequirement" #MAKE SURE THIS IS SECURE!
 time_in_hours: 24'
 touch /etc/lacs.yaml
