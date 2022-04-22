@@ -8,14 +8,21 @@ This is a relatively simple python program for a quick and easy access control s
 
 ## How it works
 
-1. This program attaches to an email account and continously checks for a specific type of email.
+1. This program attaches to an email account and checks every 15 seconds for a specific type of email.
     - The email will have a specific subject, and its content is the IP Address to allow
 2. When this email is recieved:
     - Allow the IP Address from the email using UFW
     - The IP Address will automatically be deleted from UFW in a configurable amount of time
-    - When the node program is released, it will be able to send allow changes to other servers
+    - When the node program is released, it will be able to send allow changes to other servers (see future section at bottom)
 
 ## Quick start
+
+### 1. Pre-Setup Tutorials
+
+ - It doesn't matter what email service you use, as long as there is a way for this program to access it. [Here is a tutorial for Gmail](https://realpython.com/python-send-email/#option-1-setting-up-a-gmail-account-for-development). I recommend using a dedicated email address.
+ - [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server) on setting up UFW.
+
+### 2. Copy-Paste terminal commands
 
 This code assumes you already have:
  - An email address accessable by a password
@@ -29,7 +36,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Configuring your config
+### 3. Configuring your config
 
 The configuration file will be at /etc/lacs.yaml after running the install instructions above.
 
@@ -43,15 +50,21 @@ subject: "SubjectRequirement"
 time_in_hours: 24
 ```
 
-Notes:
+### 4. Starting/stoppping LACS
+
+Start LACS:
+```bash
+systemctl start lacs.service
+```
+LACS is automatically configured to run on boot through a systemd service.
+You must run ```systemctl restart lacs.service``` after editing your config.
+
+## Notes/Requirments:
  - Your subject requirement should be secure. I recommend generating a key.
  - The Nodes feature is not ready yet as of April 21, so do not use that in the config yet.
- - If you are using Gmail, make sure to enable access from third party/unsecure apps (Described in the tutorial below)
-
-## Tutorials
-
- - It doesn't matter what email service you use, as long as there is a way for this program to access it. [Here is a tutorial for Gmail](https://realpython.com/python-send-email/#option-1-setting-up-a-gmail-account-for-development). I recommend using a dedicated email address.
- - [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server) on setting up UFW.
+ - If you are using Gmail, make sure to enable access from third party/unsecure apps (Described in the tutorials above)
+ - I recommend creating a script or shortcut that automatically emails your public IP address to your LACS mail address. [Here](https://www.icloud.com/shortcuts/74dc252244d144c091b1b147a2e80f5a) is one for MacOS/iOS.
+ - Due to the nature of checking emails, do not expect to have access immediately. It usually takes 30 seconds or under for it to update UFW
 
 ## Contributing
 
