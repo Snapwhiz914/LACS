@@ -7,6 +7,7 @@ fi
 echo "This will overwrite /etc/lacs.yaml. Do not run if there is something important in that file."
 
 #Install packages
+python3 -m ensurepip --upgrade
 python3 -m pip install --upgrade build
 python3 -m build
 python3 -m pip install dist/LACS-1.0-py3-none-any.whl
