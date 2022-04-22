@@ -1,5 +1,7 @@
 # LACS
 
+<p align=center><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pyyaml"> <img alt="GitHub" src="https://img.shields.io/github/license/Snapwhiz914/LACS"> </p>
+
 Aka. "L's Access Control System"
 
 This is a relatively simple python program for a quick and easy access control system for an internet-facing server.
@@ -18,6 +20,7 @@ This is a relatively simple python program for a quick and easy access control s
 This code assumes you already have:
  - An email address accessable by a password
  - UFW installed and set up
+(Refer to the tutorials section if you don't have both of these)
 
 ```bash
 git clone https://github.com/Snapwhiz914/LACS
