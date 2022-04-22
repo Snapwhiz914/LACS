@@ -41,7 +41,7 @@ touch /lib/systemd/system/lacs.service
 echo "$SYSTEMD_FILE" > /lib/systemd/system/lacs.service
 systemctl daemon-reload
 if systemctl enable lacs.service ; then
-    echo "Service installed successfullly. LACS will run on boot."
+    echo "Service installed successfully. LACS will run on boot."
 else
     echo "Service install failed! Check for errors above"
     exit
