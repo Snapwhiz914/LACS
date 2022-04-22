@@ -12,33 +12,33 @@ python3 -m build
 python3 -m pip install dist/LACS-1.0-py3-none-any.whl
 
 #Create a config file
-CONFIG_TEMPLATE=$'email: account@example.com\n
-password: AccountPassword123\n
-server: imap.server.com\n
-subject: "SubjectRequirement" #MAKE SURE THIS IS SECURE!\n
-time_in_hours: 24\n
-nodes:\n
-  - address: nodeAddress\n
-  - port: 1234\n
+CONFIG_TEMPLATE=$'email: account@example.com
+password: AccountPassword123
+server: imap.server.com
+subject: "SubjectRequirement" #MAKE SURE THIS IS SECURE!
+time_in_hours: 24
+nodes:
+  - address: nodeAddress
+  - port: 1234
   - key: 1234567890asdfghjk'
 touch /etc/lacs.yaml
 echo "$CONFIG_TEMPLATE" > /etc/lacs.yaml
 
 #Create a systemd service file so it will start on boot
-SYSTEMD_FILE=$'[Unit]\n
-Description=LACS\n
-After=network.target\n
-StartLimitIntervalSec=0\n
-\n
-[Service]\n
-Type=simple\n
-User=root\n
-ExecStart=start-LACS\n
-\n
-[Install]\n
+SYSTEMD_FILE=$'[Unit]
+Description=LACS
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=root
+ExecStart=start-LACS
+
+[Install]
 WantedBy=multi-user.target'
 touch /lib/systemd/system/lacs.service
-echo "$CONFIG_TEMPLATE" > /lib/systemd/system/lacs.service
+echo "$SYSTEMD_FILE" > /lib/systemd/system/lacs.service
 systemctl daemon-reload
 systemctl enable lacs.service --now
 
