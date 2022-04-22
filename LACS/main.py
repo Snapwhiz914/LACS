@@ -1,4 +1,3 @@
-import syslog
 import time
 from .subsystems.config import get_config_object
 from .subsystems.firewall import UFWManager
@@ -10,12 +9,14 @@ def main():
     print("Initializing...")
     conf = get_config_object()
     ufw_man = UFWManager()
-    mail_man = MailManager(conf["server"], conf["email"], conf["password"])
+    mail_man = MailManager(conf["server"], conf["port"], conf["email"], conf["password"])
     nodes_man = None
     try:
         nodes_man = NodesManager(conf["nodes"])
     except KeyError:
-        print("No nodes present in the config. If you think this is a mistake, check your config.")
+        #Will uncomment when the nodes feature is ready.
+        #print("No nodes present in the config. If you think this is a mistake, check your config.")
+        pass
 
     print("Done. Periodic loop started.")
     while True:

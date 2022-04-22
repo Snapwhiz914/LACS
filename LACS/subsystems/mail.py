@@ -1,16 +1,16 @@
 import imaplib
 import email
-import syslog
 
 class MailManager:
-    def __init__(self, server, email, password):
+    def __init__(self, server, port, email, password):
         self.server = server
+        self.port = port
         self.email = email
         self.password = password
     
     def get_new_messages_periodic(self):
         try:
-            self.mail = imaplib.IMAP4_SSL(self.server)
+            self.mail = imaplib.IMAP4_SSL(self.server, self.port)
             self.mail.login(email, self.password)
             self.mail.select("inbox")
 

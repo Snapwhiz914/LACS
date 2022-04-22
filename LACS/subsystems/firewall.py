@@ -1,6 +1,5 @@
 from datetime import datetime
 import subprocess
-import syslog
 from crontab import CronTab
 
 class UFWManager:

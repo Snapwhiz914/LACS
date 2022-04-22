@@ -1,4 +1,3 @@
-import syslog
 import requests
 
 class NodesManager:

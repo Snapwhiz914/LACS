@@ -7,18 +7,19 @@ fi
 echo "This will overwrite /etc/lacs.yaml. Do not run if there is something important in that file."
 
 #Install packages
-python3 -m pip install .
+if python3 -m pip install . ; then
+    echo "Package install succeeded."
+else
+    echo "Package install failed! Check and resolve using errors above."
+    exit
+fi
 
 #Create a config file
 CONFIG_TEMPLATE=$'email: account@example.com
 password: AccountPassword123
 server: imap.server.com
 subject: "SubjectRequirement" #MAKE SURE THIS IS SECURE!
-time_in_hours: 24
-nodes:
-  - address: nodeAddress
-  - port: 1234
-  - key: 1234567890asdfghjk'
+time_in_hours: 24'
 touch /etc/lacs.yaml
 echo "$CONFIG_TEMPLATE" > /etc/lacs.yaml
 
@@ -38,6 +39,10 @@ WantedBy=multi-user.target'
 touch /lib/systemd/system/lacs.service
 echo "$SYSTEMD_FILE" > /lib/systemd/system/lacs.service
 systemctl daemon-reload
-systemctl enable lacs.service --now
-
-echo "Done. Have fun with a secure system. Make sure to edit your configuration file at /etc/lacs.yaml"
+if systemctl enable lacs.service ; then
+    echo "Service installed successfullly. LACS will run on boot."
+else
+    echo "Service install failed! Check for errors above"
+    exit
+fi
+echo "Done. Have fun with a secure system. Make sure to edit your configuration file at /etc/lacs.yaml, then run systemctl start lacs.service."
