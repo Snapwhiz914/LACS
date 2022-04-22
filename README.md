@@ -24,7 +24,7 @@ This code assumes you already have:
 
 ```bash
 git clone https://github.com/Snapwhiz914/LACS
-cd LACS-master
+cd LACS
 chmod +x install.sh
 ./install.sh
 ```
