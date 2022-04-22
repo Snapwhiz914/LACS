@@ -63,7 +63,7 @@ You must run ```systemctl restart lacs.service``` after editing your config.
  - Your subject requirement should be secure. I recommend generating a key.
  - The Nodes feature is not ready yet as of April 21, so do not use that in the config yet.
  - If you are using Gmail, make sure to enable access from third party/unsecure apps (Described in the tutorials above)
- - I recommend creating a script or shortcut that automatically emails your public IP address to your LACS mail address. [Here](https://www.icloud.com/shortcuts/74dc252244d144c091b1b147a2e80f5a) is one for MacOS/iOS.
+ - I recommend creating a script or shortcut that automatically emails your public IP address to your LACS mail address. [Here](https://www.icloud.com/shortcuts/91d8e88b4e5741a3ba9ac3010ea57041) is one for MacOS/iOS.
  - Due to the nature of checking emails, do not expect to have access immediately. It usually takes 30 seconds or under for it to update UFW
 
 ## Contributing
