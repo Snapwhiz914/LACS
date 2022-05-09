@@ -62,7 +62,7 @@ You must run ```systemctl restart lacs.service``` after editing your config.
 
 ## Notes/Requirments:
  - Your subject requirement should be secure. I recommend generating a key.
- - In the config, port 143 is the default, do not change it unless necessary
+ - In the config, port 143 is the default. For Imap ssl (if you are using gmail for example), use port 993.
  - The Nodes feature is not ready yet as of April 21, so do not use that in the config yet.
  - If you are using Gmail, make sure to enable access from third party/unsecure apps (Described in the tutorials above)
  - I recommend creating a script or shortcut that automatically emails your public IP address to your LACS mail address. [Here](https://www.icloud.com/shortcuts/91d8e88b4e5741a3ba9ac3010ea57041) is one for MacOS/iOS.
