@@ -7,7 +7,7 @@ fi
 echo "This will overwrite /etc/lacs.yaml. Do not run if there is something important in that file."
 
 #Install packages
-if python3 -m pip install . ; then
+if python3 -m pip install . --force-reinstall; then
     echo "Package install succeeded."
 else
     echo "Package install failed! Check and resolve using errors above."
