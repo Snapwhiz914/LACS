@@ -33,6 +33,3 @@ def main():
         except Exception as e:
             print(f"Peridic Error: {e}")
         time.sleep(15)
-
-if __name__ == '__main__':
-    main()
