@@ -30,6 +30,6 @@ def main():
                     print("New message successfully requested access for IP: " + result.compressed)
                     ufw_man.add_ip_to_ufw(result.compressed)
                     nodes_man.update_nodes(result.compressed, conf["time_in_hours"])
-            time.sleep(15)
         except Exception as e:
             print(f"Peridic Error: {e}")
+        time.sleep(15)

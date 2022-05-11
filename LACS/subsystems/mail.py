@@ -35,4 +35,6 @@ class MailManager:
             print("(ignorable) Mail Connection timed out. If this happens freqently, check if your mail service is up and working.")
         except ConnectionError as e:
             print(f"Connection error to mail server occurred with error number {e.errno}")
+        self.mail.close()
+        self.mail = None
         return []
