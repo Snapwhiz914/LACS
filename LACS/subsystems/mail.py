@@ -2,16 +2,16 @@ import imaplib
 import email
 
 class MailManager:
-    def __init__(self, server, port, email, password):
+    def __init__(self, server, port, addr, password):
         self.server = server
         self.port = port
-        self.email = email
+        self.addr = addr
         self.password = password
     
     def get_new_messages_periodic(self):
         try:
             self.mail = imaplib.IMAP4_SSL(self.server, self.port)
-            self.mail.login(email, self.password)
+            self.mail.login(self.addr, self.password)
             self.mail.select("inbox")
 
             status, data = self.mail.search(None, 'UNSEEN')
