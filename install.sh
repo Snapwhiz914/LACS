@@ -4,7 +4,6 @@ if [ "$EUID" -ne 0 ]
   then echo "This must be run as root. No exceptions (limitation of UFW)."
   exit
 fi
-echo "This will overwrite /etc/lacs.yaml. Do not run if there is something important in that file."
 
 #Install packages
 if python3 -m pip install . --force-reinstall; then
@@ -18,11 +17,16 @@ fi
 CONFIG_TEMPLATE=$'email: account@example.com
 password: AccountPassword123
 server: imap.server.com
-port: 143 #Default imap port, 993 is the secure port. Make sure you know which one to use.
+port: 143 #Default imap port, 993 is the secure port (also gmail port). Make sure you know which one to use.
 subject: SubjectRequirement #MAKE SURE THIS IS SECURE!
 time_in_hours: 24'
-touch /etc/lacs.yaml
-echo "$CONFIG_TEMPLATE" > /etc/lacs.yaml
+if [ -f "/etc/lacs.yaml" ]
+then
+    echo "/etc/lacs.yaml has already been created, not overwriting..."
+else
+    touch /etc/lacs.yaml
+    echo "$CONFIG_TEMPLATE" > /etc/lacs.yaml
+fi
 
 #Create a systemd service file so it will start on boot
 SYSTEMD_FILE=$'[Unit]
