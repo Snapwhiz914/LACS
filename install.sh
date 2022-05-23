@@ -6,7 +6,10 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #Install packages
-if python3 -m pip install . --force-reinstall; then
+#Uninstall in case already installed
+python3 -m pip uninstall -y lacs
+
+if python3 -m pip install .; then
     echo "Package install succeeded."
 else
     echo "Package install failed! Check and resolve using errors above."
