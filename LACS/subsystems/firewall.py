@@ -1,5 +1,6 @@
 from datetime import datetime
 import subprocess
+import syslog
 from crontab import CronTab
 
 class UFWManager:
@@ -12,7 +13,7 @@ class UFWManager:
         except subprocess.CalledProcessError as e:
             print(f"UFW allow command failed with: {e.output}")
         
-        print("ADDED firewall rule to allow from " + ip_addr)
+        syslog.syslog(syslog.LOG_INFO, "ADDED firewall rule to allow from " + ip_addr)
 
         dt = datetime.now() + datetime.timedelta(hours=24)
         job = self.cron.new(command='f"ufw delete allow from {ip_addr}"')

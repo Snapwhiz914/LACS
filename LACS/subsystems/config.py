@@ -4,6 +4,7 @@ from yaml.parser import ParserError
 import yaml
 import imaplib
 import sys
+import syslog
 
 nodes_schema = Schema([{
     "address": str,
@@ -36,7 +37,7 @@ def get_config_object():
         check_if_server_is_reachable(validated["server"], validated["port"])
         return validated
     except FileNotFoundError as e:
-        print("Config file not found.")
+        syslog.syslog(syslog.LOG_INFO, "Config file not found.")
         sys.exit(1)
     except ScannerError as e:
         print(f"YAML scanner error when trying to load config: {e}")

@@ -1,5 +1,7 @@
 import imaplib
 import email
+import socket
+import syslog
 
 class MailManager:
     def __init__(self, server, port, addr, password):
@@ -10,6 +12,7 @@ class MailManager:
     
     def get_new_messages_periodic(self):
         try:
+            socket.setdefaulttimeout(10)
             self.mail = imaplib.IMAP4_SSL(self.server, self.port)
             self.mail.login(self.addr, self.password)
             self.mail.select("inbox")
@@ -30,9 +33,9 @@ class MailManager:
                         new_mail_messages.append(message)
             return new_mail_messages
         except AssertionError:
-            print("Status is not OK after mail search.")
+            syslog.syslog(syslog.LOG_INFO, "Status is not OK after mail search.")
         except TimeoutError:
-            print("(ignorable) Mail Connection timed out. If this happens freqently, check if your mail service is up and working.")
+            syslog.syslog(syslog.LOG_INFO, "(ignorable) Mail Connection timed out. If this happens freqently, check if your mail service is up and working.")
         except ConnectionError as e:
             print(f"Connection error to mail server occurred with error number {e.errno}")
         self.mail.close()

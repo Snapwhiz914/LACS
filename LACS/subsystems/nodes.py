@@ -1,4 +1,5 @@
 import requests
+import syslog
 
 class NodesManager:
     def __init__(self, nodes_arr):
@@ -13,6 +14,6 @@ class NodesManager:
                 if res["success"] == True:
                     print(f"Updated node {node_dict['address']} successfully.")
                 else: 
-                    print("Updating node {node_dict['address']} failed.")
+                    syslog.syslog(syslog.LOG_INFO, "Updating node {node_dict['address']} failed.")
             except Exception as e:
-                print("Updating node {node_dict['address']} errored with e: {e}.")
+                syslog.syslog(syslog.LOG_INFO, "Updating node {node_dict['address']} errored with e: {e}.")
