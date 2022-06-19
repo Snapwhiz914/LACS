@@ -60,7 +60,7 @@ systemctl start lacs.service
 LACS is automatically configured to run on boot through a systemd service.
 You must run ```systemctl restart lacs.service``` after editing your config.
 
-### 5. Problems? Read the notes \/
+### 5. Problems? Read the notes
 
 ## Notes/Requirments:
  - Your subject requirement should be secure. I recommend generating a key.
