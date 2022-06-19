@@ -26,7 +26,7 @@ def main():
                 mail_from = message['from']
                 mail_subject = message['subject']
                 syslog.syslog(syslog.LOG_INFO, "Recieved message from: " + mail_from + ", Subject: " + mail_subject)
-                result = get_req_from_email(message)
+                result = get_req_from_email(message, conf["subject"])
                 if result != False:
                     syslog.syslog(syslog.LOG_INFO, "New message successfully requested access for IP: " + result.compressed)
                     ufw_man.add_ip_to_ufw(result.compressed)
