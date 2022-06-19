@@ -60,13 +60,17 @@ systemctl start lacs.service
 LACS is automatically configured to run on boot through a systemd service.
 You must run ```systemctl restart lacs.service``` after editing your config.
 
+### 5. Problems? Read the notes \/
+
 ## Notes/Requirments:
  - Your subject requirement should be secure. I recommend generating a key.
- - In the config, port 143 is the default. For Imap ssl (if you are using gmail for example), use port 993.
+ - Non-SSL mail services are not supported at this time (support may come in the future, but for now stick to the secure option)
  - The Nodes feature is not ready yet as of April 21, so do not use that in the config yet.
  - If you are using Gmail, make sure to enable access from third party/unsecure apps (Described in the tutorials above)
  - I recommend creating a script or shortcut that automatically emails your public IP address to your LACS mail address. [Here](https://www.icloud.com/shortcuts/91d8e88b4e5741a3ba9ac3010ea57041) is one for MacOS/iOS.
  - Due to the nature of checking emails, do not expect to have access immediately. It usually takes 30 seconds or under for it to update UFW
+ - Mail with attachments are automatically ignored, no matter what the text contents of the message are.
+ - On a related subject to the above note, the message body containing the ip address cannot have any formatting (just normal ascii)
 
 ## Contributing
 
