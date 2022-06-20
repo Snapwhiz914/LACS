@@ -71,6 +71,7 @@ You must run ```systemctl restart lacs.service``` after editing your config.
  - Due to the nature of checking emails, do not expect to have access immediately. It usually takes 30 seconds or under for it to update UFW
  - Mail with attachments are automatically ignored, no matter what the text contents of the message are.
  - On a related subject to the above note, the message body containing the ip address cannot have any formatting (just normal ascii)
+ - Do not run multiple instances of this service on the same account at the same time, they will interfere with each other. I plan to solve this problem with the nodes feature.
 
 ## Contributing
 
