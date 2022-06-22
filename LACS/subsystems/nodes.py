@@ -12,8 +12,8 @@ class NodesManager:
                 r = requests.post(f"http://" + node_dict["address"] + ":" + str(node_dict["port"]) + "/processrequest", json={"key": node_dict["key"], "ip": ip, "time": hours})
                 res = r.json()
                 if res["success"] == True:
-                    print(f"Updated node {node_dict['address']} successfully.")
+                    syslog.syslog(syslog.LOG_INFO, f"Updated node {node_dict['address']} successfully.")
                 else: 
-                    syslog.syslog(syslog.LOG_INFO, "Updating node {node_dict['address']} failed.")
+                    syslog.syslog(syslog.LOG_ALERT, "Updating node {node_dict['address']} failed.")
             except Exception as e:
-                syslog.syslog(syslog.LOG_INFO, "Updating node {node_dict['address']} errored with e: {e}.")
+                syslog.syslog(syslog.LOG_ALERT, "Updating node {node_dict['address']} errored with e: {e}.")

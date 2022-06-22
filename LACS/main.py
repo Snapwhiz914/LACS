@@ -32,5 +32,5 @@ def main():
                     ufw_man.add_ip_to_ufw(result.compressed)
                     nodes_man.update_nodes(result.compressed, conf["time_in_hours"])
         except Exception as e:
-            print(f"Peridic Error: {e}")
+            syslog.syslog(syslog.LOG_ALERT, f"Peridic Error: {e}")
         time.sleep(15)

@@ -26,7 +26,7 @@ def check_if_server_is_reachable(server, port):
     try:
         imaplib.IMAP4_SSL(host=server, port=port)
     except Exception as e:
-        print(f"Could not connect to email server with error: {e}")
+        syslog.syslog(syslog.LOG_ALERT, f"Could not connect to email server with error: {e}")
         sys.exit(1)
 
 def get_config_object():
@@ -37,11 +37,11 @@ def get_config_object():
         check_if_server_is_reachable(validated["server"], validated["port"])
         return validated
     except FileNotFoundError as e:
-        syslog.syslog(syslog.LOG_INFO, "Config file not found.")
+        syslog.syslog(syslog.LOG_ALERT, "Config file not found.")
         sys.exit(1)
     except ScannerError as e:
-        print(f"YAML scanner error when trying to load config: {e}")
+        syslog.syslog(syslog.LOG_ALERT, f"YAML scanner error when trying to load config: {e}")
         sys.exit(1)
     except ParserError as e:
-        print(f"YAML Parser error: check config syntax: {e}")
+        syslog.syslog(syslog.LOG_ALERT, f"YAML Parser error: check config syntax: {e}")
         sys.exit(1)
