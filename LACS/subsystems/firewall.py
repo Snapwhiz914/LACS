@@ -6,7 +6,7 @@ class UFWManager:
     def __init__(self):
         self.cron = CronTab(user='root')
     
-    def add_ip_to_ufw(self, ip_addr):
+    def add_ip_to_ufw(self, ip_addr, hours_until_removal):
         try:
             result = subprocess.run(f"ufw allow from {ip_addr}", shell=True, check=True, capture_output=True)
         except subprocess.CalledProcessError as e:

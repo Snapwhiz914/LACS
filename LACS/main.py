@@ -31,6 +31,8 @@ def main():
                     syslog.syslog(syslog.LOG_INFO, "New message successfully requested access for IP: " + result.compressed)
                     ufw_man.add_ip_to_ufw(result.compressed, conf["time_in_hours"])
                     #nodes_man.update_nodes(result.compressed, conf["time_in_hours"])
+                else:
+                    syslog.syslog(syslog.LOG_INFO, "Message from " + mail_from + "was invalid, ignoring")
         except Exception as e:
             syslog.syslog(syslog.LOG_ALERT, f"Peridic Error: {e}")
         time.sleep(15)
