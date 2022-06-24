@@ -8,7 +8,7 @@ This is a relatively simple python program for a quick and easy access control s
 
 ## How it works
 
-1. This program attaches to an email account and checks every 15 seconds for a specific type of email.
+1. This program "attaches" to an email account and checks every 15 seconds for a specific type of email.
     - The email will have a specific subject, and its content is the IP Address to allow
 2. When this email is recieved:
     - Allow the IP Address from the email using UFW
@@ -27,6 +27,7 @@ This is a relatively simple python program for a quick and easy access control s
 This code assumes you already have:
  - An email address accessable by a password
  - UFW installed and set up
+ - The "at" command installed (comes by default on most linux distros)
 (Refer to the tutorials section if you don't have both of these)
 
 ```bash
@@ -63,6 +64,7 @@ You must run ```systemctl restart lacs.service``` after editing your config.
 ### 5. Problems? Read the notes
 
 ## Notes/Requirments:
+ - Any linux OS that supports UFW and python should be able to run this program.
  - Your subject requirement should be secure. I recommend generating a key.
  - Non-SSL mail services are not supported at this time (support may come in the future, but for now stick to the secure option)
  - The Nodes feature is not ready yet as of April 21, so do not use that in the config yet.
