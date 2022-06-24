@@ -4,7 +4,7 @@ import syslog
 
 class UFWManager:
     def __init__(self):
-        self.cron = CronTab(user='root')
+        pass
     
     def add_ip_to_ufw(self, ip_addr, hours_until_removal):
         try:
