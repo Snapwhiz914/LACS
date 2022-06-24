@@ -16,6 +16,10 @@ else
     exit
 fi
 
+
+echo "Making sure at is installed..."
+apt install at
+
 #Create a config file
 CONFIG_TEMPLATE=$'email: account@example.com
 password: AccountPassword123
@@ -53,4 +57,6 @@ else
     echo "Service install failed! Check for errors above"
     exit
 fi
+
 echo "Done. Have fun with a secure system. Make sure to edit your configuration file at /etc/lacs.yaml, then run systemctl start lacs.service."
+echo "Check the output above and make sure at was installed."
