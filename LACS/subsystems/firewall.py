@@ -11,6 +11,7 @@ class UFWManager:
             result = subprocess.run(f"ufw allow from {ip_addr}", shell=True, check=True, capture_output=True)
         except subprocess.CalledProcessError as e:
             syslog.syslog(syslog.LOG_ALERT, f"UFW allow command failed with: {e.output}")
+            return
         
         syslog.syslog(syslog.LOG_INFO, "ADDED firewall rule to allow from " + ip_addr)
 

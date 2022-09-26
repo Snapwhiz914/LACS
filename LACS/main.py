@@ -15,9 +15,7 @@ def main():
     try:
         nodes_man = NodesManager(conf["nodes"])
     except KeyError:
-        #Will uncomment when the nodes feature is ready.
-        #syslog.syslog(syslog.LOG_INFO, "No nodes present in the config. If you think this is a mistake, check your config.")
-        pass
+        syslog.syslog(syslog.LOG_INFO, "No nodes present in the config. If you think this is a mistake, check your config.")
 
     syslog.syslog(syslog.LOG_INFO, "Done. Periodic loop started.")
     while True:
@@ -30,7 +28,8 @@ def main():
                 if result != False:
                     syslog.syslog(syslog.LOG_INFO, "New message successfully requested access for IP: " + result.compressed)
                     ufw_man.add_ip_to_ufw(result.compressed, conf["time_in_hours"])
-                    #nodes_man.update_nodes(result.compressed, conf["time_in_hours"])
+                    
+                    if not nodes_man == None: nodes_man.update_nodes(result.compressed, conf["time_in_hours"])
                 else:
                     syslog.syslog(syslog.LOG_INFO, "Message from " + mail_from + "was invalid, ignoring")
         except Exception as e:

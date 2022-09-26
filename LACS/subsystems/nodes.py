@@ -14,6 +14,6 @@ class NodesManager:
                 if res["success"] == True:
                     syslog.syslog(syslog.LOG_INFO, f"Updated node {node_dict['address']} successfully.")
                 else: 
-                    syslog.syslog(syslog.LOG_ALERT, "Updating node {node_dict['address']} failed.")
+                    syslog.syslog(syslog.LOG_ALERT, f"Updating node {node_dict['address']} failed.")
             except Exception as e:
-                syslog.syslog(syslog.LOG_ALERT, "Updating node {node_dict['address']} errored with e: {e}.")
+                syslog.syslog(syslog.LOG_ALERT, f"Updating node {node_dict['address']} errored with e: {e}.")
