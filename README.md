@@ -63,6 +63,10 @@ You must run ```systemctl restart lacs.service``` after editing your config.
 
 ### 5. Problems? Read the notes
 
+### 6. Updating
+
+Simply run ```git pull``` in whatever directory you cloned lacs in before and run the ```install.sh``` file again.
+
 ## Notes/Requirments:
  - Any linux OS that supports UFW and python should be able to run this program.
  - Your subject requirement should be secure. I recommend generating a key.
