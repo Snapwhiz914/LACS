@@ -8,6 +8,11 @@ class UFWManager:
     
     def add_ip_to_ufw(self, ip_addr, hours_until_removal):
         try:
+            check_res = subprocess.run(f"ufw status", shell=True, check=True, capture_output=True)
+            for rule in check_res.stdout.decode("ascii").split("\n"):
+                if ip_addr in rule and "ALLOW" in rule:
+                    syslog.syslog(syslog.LOG_WARN, f"ufw allow {ip_addr} does not need to run, it is already present in the firewall.")
+                    return
             result = subprocess.run(f"ufw allow from {ip_addr}", shell=True, check=True, capture_output=True)
         except subprocess.CalledProcessError as e:
             syslog.syslog(syslog.LOG_ALERT, f"UFW allow command failed with: {e.output}")
