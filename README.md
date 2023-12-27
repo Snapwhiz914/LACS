@@ -77,12 +77,11 @@ Simply run ```git pull``` in whatever directory you cloned lacs in before and ru
  - Due to the nature of checking emails, do not expect to have access immediately. It usually takes 30 seconds or under for it to update UFW
  - Mail with attachments are automatically ignored, no matter what the text contents of the message are.
  - On a related subject to the above note, the message body containing the ip address cannot have any formatting (just normal ascii)
- - Do not run multiple instances of this service on the same account at the same time, they will interfere with each other. I plan to solve this problem with the nodes feature.
+ - **Do not** run multiple instances of this service on the same account at the same time, they will interfere with each other. If you want to use one account to control access on multiple machines, delegate one machine as the host and install [LACS-node](https://github.com/Snapwhiz914/LACS-node) on the other machines.
 
 ## Contributing
 
 Be sure to read the CONTRIBUTING.md file before you submit a pull request
 
 ## Future
-
- - Soon (as of April 21), I will release a node package, which can run on another server that is update by changes to the hub server.
+ - Docker container compatibility
